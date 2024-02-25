@@ -1,10 +1,10 @@
 {
-    "name": "vite-vscode-extension-template",
-    "displayName": "Vite VS Code Extension Template",
-    "description": "A template for VS Code Extension development",
+    "name": "vscode-vue-template-string-highlight",
+    "displayName": "Vue Template String Highlight",
+    "description": "highlight the vue syntax in the tagged template string",
     "author": "Aaron Zhou",
     "publisher": "AaaaronZhou",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "license": "MIT",
     "type": "module",
     "engines": {
@@ -14,18 +14,26 @@
         "Formatters"
     ],
     "keywords": [
-        "formatter"
+        "vue",
+        "template",
+        "string",
+        "highlight",
+        "tagged",
+        "es6",
+        "embeded",
+        "javascript",
+        "typescript"
     ],
     "files": [
         "dist"
     ],
-    "homepage": "https://github.com/Clarkkkk/vite-vscode-extension-template.git#readme",
+    "homepage": "https://github.com/Clarkkkk/vscode-vue-template-string-highlight.git#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Clarkkkk/vite-vscode-extension-template.git"
+        "url": "git+https://github.com/Clarkkkk/vscode-vue-template-string-highlight.git"
     },
     "bugs": {
-        "url": "https://github.com/Clarkkkk/vite-vscode-extension-template.git/issues"
+        "url": "https://github.com/Clarkkkk/vscode-vue-template-string-highlight.git/issues"
     },
     "badges": [],
     "galleryBanner": {
@@ -35,32 +43,29 @@
     "main": "./dist/extension.cjs",
     "browser": "./dist/extension.cjs",
     "contributes": {
-        "configuration": {
-            "title": "Vite VS Code Extension Template",
-            "properties": {
-                "vite-vscode-extension-template.indentStyle": {
-                    "description": "Set the indent style",
-                    "type": "string",
-                    "enum": [
-                        "space",
-                        "tab"
-                    ],
-                    "enumDescriptions": [
-                        "Use 4 spaces for indentation",
-                        "Use tab for indentation"
-                    ],
-                    "default": "space"
-                },
-                "vite-vscode-extension-template.align": {
-                    "description": "Align the values of all directives in the same block",
-                    "type": "boolean",
-                    "default": false
+        "grammars": [
+            {
+                "injectTo": [
+                    "source.js",
+                    "source.js.jsx",
+                    "source.jsx",
+                    "source.ts",
+                    "source.tsx",
+                    "text.html.basic"
+                ],
+                "scopeName": "inline.vue-template-string",
+                "path": "./syntaxes/vue.json",
+                "embeddedLanguages": {
+                    "meta.embedded.block.vue": "vue"
                 }
             }
-        }
+        ]
     },
     "activationEvents": [
-        "onLanguage:typescript"
+        "onLanguage:javascript",
+        "onLanguage:javascriptreact",
+        "onLanguage:typescript",
+        "onLanguage:typescriptreact"
     ],
     "scripts": {
         "vscode:prepublish": "pnpm run package",
